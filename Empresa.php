@@ -1,68 +1,57 @@
 <?php
-/**En la clase Responsable:
-1. Se registra la siguiente información: nombre, apellido, Nro de Documento, direccion, mail y telefono.
-2. Método constructor que recibe como parámetros los valores iniciales para los atributos definidos en la
-clase.
+/**En la clase Empresa :
+1. Se registra la siguiente información: identificación, nombre y la colección de Viajes que realiza.
+2. Método constructor que recibe como parámetros los valores iniciales para los atributos.
 3. Los métodos de acceso de cada uno de los atributos de la clase.
-4. Redefinir el método toString para que retorne la información de los atributos de la clase. */
+4. Redefinir el método _toString para que retorne la información de los atributos de la clase.
+5. Implementar el método darViajeADestino($elDestino) que recibe por parámetro un destino junto a una
+cantidad de asientos y retorna una colección con todos los viajes disponibles a ese destino.
+6. Implementar el método incorporarViaje($objViaje) que recibe como parámetro un viaje, verifica que no
+se encuentre registrado ningún otro viaje al mismo destino, en la misma fecha y con el mismo horario de
+partida. El método retorna verdadero si la incorporación del viaje se realizó correctamente y falso en caso
+contrario.
+7. Implementar el método venderViajeADestino($canAsientos, $destino) método que recibe por parámetro la cantidad de asientos y el destino y se registra la asignación del viaje en caso de ser posible. (invocar
+al método asignarAsientosDisponibles). El método retorna la instancia del viaje asignado o null en caso
+contrario.
+8. Implementar el método montoRecaudado que retorna el monto recaudado por la Empresa.
+( tener en cuenta los asientos vendidos y el importe del viaje) */
 
-class Responsable{
-        //nombre, apellido, Nro de Documento, direccion, mail y telefono.
-        private $nombreResponsable;
-        private $apellidoResponsable;
-        private $docResponsable;
-        private $direResponsable;
-        private $mailResponsable;
-        private $telResponsable;
+class Empresa{
+        //identificación, nombre y la colección de Viajes que realiza
+        private $identificacion;
+        private $nombreEmpresa;
+        private $coleccionViajes;
 
         //Método constructor que recibe como parámetros los valores iniciales para los atributos definidos en la clase.
-    public function __construct($nombreResponsable,$apellidoResponsable,$docResponsable,$direResponsable,$mailResponsable,$telResponsable)
+    public function __construct($identificacion,$nombreEmpresa,$coleccionViajes)
     {
-        $this->nombreResponsable=$nombreResponsable;
-        $this->apellidoResponsable=$apellidoResponsable;
-        $this->docResponsable=$docResponsable;
-        $this->direResponsable=$direResponsable;
-        $this->mailResponsable=$mailResponsable;
-        $this->telResponsable=$telResponsable;
+        $this->identificacion=$identificacion;
+        $this->nombreEmpresa=$nombreEmpresa;
+        $this->coleccionViajes=$coleccionViajes;
 
     }      
     //getter los métodos de acceso de cada uno de los atributos de la clase.
-    public function getNombre(){
-        return $this->nombreResponsable;
-    } public function getApellido(){
-        return $this->apellidoResponsable	;
-    }public function getDocumento(){
-        return $this->docResponsable;
-    } public function getDireccion(){
-        return $this->direResponsable	;
-    }public function getMail(){
-        return $this->mailResponsable;
-    } public function getTelefono(){
-        return $this->telResponsable	;
+    public function getIde(){
+        return $this->identificacion;
+    } public function getNomEmpresa(){
+        return $this->nombreEmpresa	;
+    }public function getColViaje(){
+        return $this->coleccionViajes;
     }
     //setter los métodos de acceso de cada uno de los atributos de la clase.
-    public function setNombre($nom){
-        $this->nombreResponsable =$nom;
-    }public function setApellido($apell	){
-        $this->apellidoResponsable =$apell	;
-    }public function setDocumento($doc){
-        $this->docResponsable =$doc	; 
-   }public function setDireccion($dire){
-        $this->direResponsable =$dire	;
-    }public function setMail($mail){
-        $this->mailResponsable =$mail	; 
-   }public function setTelefono($tel){
-        $this->telResponsable =$tel	;
-    }
+    public function setIde($vIde){
+        $this->identificacion =$vIde;
+    }public function setNomEmpresa($vNomEmp){
+        $this->nombreEmpresa =$vNomEmp	;
+    }public function setColViaje($vArrayViajes){
+        $this->coleccionViajes =$vArrayViajes	; 
+   }
     //metodo magico
     public function __toString(){
 
-        return  "nombre y apellido del pasajero : " . $this->getNombre()    ."  "  .
-                $this->getApellido() ."\n"   .
-                "dni: ".$this->getDocumento()."\n"   .
-                "direccion: ".$this->getDireccion()    .  
-                "mail: ".$this->getMail()    .  
-                "telefono: ".$this->getTelefono()    .  "\n" ;
+        return  "Identificacion: " . $this->getIde()    ."  "  .
+                "Nombre de la empresa: ".$this->getNomEmpresa()."\n"   .
+                "Viajes de la empresa: ".$this->getColViaje()     .  "\n" ;
     }
 }
 
